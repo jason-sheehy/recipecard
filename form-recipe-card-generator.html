@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>form-recipe-card-generator</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>RecipeCard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <form id="frm1" class="grid-container">
+      <div class="header">
+        <input type="text" name="title" placeholder="Recipe title" autofocus>
+        <input type="text" name="subtitle" placeholder="subtitle">
+      </div>
+      <div class="summary">
+        <input type="text" name="prepTime" placeholder="Prep time">
+        <input type="text" name="cookTime" placeholder="Cook time">
+        <input type="text" name="yield" placeholder="Yield">
+      </div>
+    <img class="logo" src='img/logo360x360.png' alt=''>
+    <div class="ingredients">
+      <h2>Ingredients</h2>
+        <input type="text" name="ingredient0" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient1" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient2" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient3" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient4" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient5" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient6" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient7" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient8" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient9" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient10" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient11" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient12" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient13" placeholder="ingredient" autocomplete="on">
+        <input type="text" name="ingredient14" placeholder="ingredient" autocomplete="on">
+    </div>
+    <div class="instructions">
+      <h2>Instructions</h2>
+        <textarea type="text" name="instructions0" placeholder="instruction1" autocomplete="on" rows="1" cols = "95"></textarea>
+        <textarea type="text" name="instructions1" placeholder="instruction2" autocomplete="on" rows="1" cols = "95"></textarea>
+        <textarea type="text" name="instructions2" placeholder="instruction3" autocomplete="on" rows="1" cols = "95"></textarea>
+        <textarea type="text" name="instructions3" placeholder="instruction4" autocomplete="on" rows="1" cols = "95"></textarea>
+        <textarea type="text" name="instructions4" placeholder="instruction5" autocomplete="on" rows="1" cols = "95"></textarea>
+        <textarea type="text" name="instructions5" placeholder="instruction6" autocomplete="on" rows="1" cols = "95"></textarea>
+        <textarea type="text" name="instructions6" placeholder="instruction7" autocomplete="on" rows="1" cols = "95"></textarea>
+        <textarea type="text" name="instructions7" placeholder="instruction8" autocomplete="on" rows="1" cols = "95"></textarea>
+        <textarea type="text" name="instructions8" placeholder="instruction9" autocomplete="on" rows="1" cols = "95"></textarea>
+        <textarea type="text" name="instructions9" placeholder="instruction10" autocomplete="on" rows="1" cols = "95"></textarea>
+    </div>
+    <div class="notes">
+      <p id="test"></p>
+      <h3>Notes</h3>
+      <textarea type="text" name="notes" placeholder="notes" rows="5" cols="60"></textarea><br>
+      <button type="submit">Create Recipe Card</button>
+
+    </div>
+  </form>
+  </body>
+  <script type="text/javascript">
+  window.onload = function() {
+    document.getElementById('frm1').onsubmit = function() {
+    /* do what you want with the form */
+
+    // Should be triggered on form submit
+    document.open();
+    document.write("<!DOCTYPE html>\
+    <html lang=\"en\" >\
+      <head>\
+        <meta charset=\"UTF-8\">\
+        <title>RecipeCard</title>\
+        <link rel=\"stylesheet\" href=\"css/style.css\">\
+      </head>\
+      <body>\
+        <div class=\"grid-container\">\
+          <div class=\"header\">\
+            <h1 class=\"title\">"+this.title.value+"</h1>\
+            <h4>"+this.subtitle.value+"</h4>\
+          </div>\
+        <img class=\"logo\" src='img/logo360x360.png' alt=''>\
+        <div class=\"ingredients\">\
+          <h2>Ingredients</h2>\
+          <ul id=\"ingredientList\">");
+        //loop through ingredient fields and only write if they are filled in.
+       for(ingredientCount=0; ingredientCount<15; ingredientCount++){
+         let ingredientNum = "ingredient" + ingredientCount;
+         if (this[ingredientNum].value) {
+           document.write("<li>" + this[ingredientNum].value + "</li>");
+         }
+       };
+        //resume writing html
+        document.write("</ul>\
+        </div>\
+        <div class=\"instructions\">\
+          <h2>Instructions</h2>\
+          <ol>");
+        //loop through instruction fields and only write if they are filled in.
+        for(instructionCount=0; instructionCount<10; instructionCount++){
+          let instructionNum = "instructions" + instructionCount;
+          if (this[instructionNum].value) {
+            document.write("<li>" + this[instructionNum].value + "</li>");
+          }
+        };
+        //resume writing html
+        document.write("</ol>\
+        </div>\
+        <div class=\"summary\">\
+          <p>Prep time: " + this.prepTime.value + "</p>\
+          <p>Cook time: " + this.cookTime.value + "</p>\
+          <p>Yield: " + this.yield.value + "</p>\
+        </div>\
+        <div class=\"notes\">\
+          <h3>Notes</h3>\
+          <p>" + this.notes.value + "</p>\
+        </div>\
+        </div>\
+      </body>\
+    </html>");
+    document.close();
+    //return false to prevent the default form behavior
+    return false;
+  }
+}
+</script>
+</html>
+  
+  
+
+</body>
+
+</html>
